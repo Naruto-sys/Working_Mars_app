@@ -1,0 +1,58 @@
+{% extends "base.html" %} 
+
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/page-style.css')}}">
+<div class="cont">
+	<h2 align="center" style="font-size: 54px; margin-bottom: 20px;">Works log</h2>
+	<hr>
+	{% for job in jobs %}
+		<h3 align="center" class="cap" style="margin-top: 40px;"> Action # {{ loop.index }} </h3>
+
+		<table class="table" border="2" cellpadding="2px" width="100%">
+			<tr class="str1" bgcolor="#CCCCCC">
+				<th style="text-align: center;">
+					Title of activity
+				</th>
+				<th style="text-align: center;">
+					Team leader
+				</th>
+				<th style="text-align: center;">
+					Duration
+				</th>
+				<th style="text-align: center;">
+					List of collaborators
+				</th>
+				<th style="text-align: center;">
+					Is finished
+				</th>
+			</tr>
+
+			<tr class="str2" bgcolor="#CCCCFF">
+				<td>
+					<span> {{ job.job }} </span>
+				</td>
+				<td>
+					<span> {{ users[job.team_leader].name }} {{ users[job.team_leader].surname }} </span>
+				</td>
+				<td>
+					<span> {{ job.work_size }} hours</span>
+				</td>
+				<td>
+					<span> {{ job.collaborators }} </span>
+				</td>
+				<td bgcolor="#FFB6C1">
+					<span>
+						{% if job.is_finished == True %}
+						Finished
+						{% else %}
+						Is not finished
+						{% endif %}
+					</span>
+				</td>
+			</tr>
+		</table>
+	{% endfor %}
+</div>
+
+{% endblock %}

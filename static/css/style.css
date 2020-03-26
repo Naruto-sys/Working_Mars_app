@@ -1,0 +1,28 @@
+header {
+	background-color: #fdf5e6;
+	height: 100px;
+}
+h1 {
+	margin-left: 20px;
+    font-family: sans-serif;
+    text-shadow: 1px 1px 2px black;
+}
+.gimn {
+	clear: both;
+	background: linear-gradient(to top left, #fdf5e6, #FAFAD2);
+    padding-left: 20px;
+    height: 30px;
+    color: #B22222;
+}
+.left {
+	float: left;
+	width: 70%;
+}
+.right {
+	float: right;
+	width: 30%;
+	color: red;
+}
+.auth {
+    margin-top: 20px;
+}
