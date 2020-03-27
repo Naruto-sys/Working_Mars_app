@@ -5,6 +5,9 @@
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/page-style.css')}}">
 <div class="cont">
 	<h2 align="center" style="font-size: 54px; margin-bottom: 20px;">Works log</h2>
+	{% if current_user.is_authenticated %}
+	<a class="btn btn-info" href="/addjob">Добавить работу</a>
+	{% endif %}
 	<hr>
 	{% for job in jobs %}
 		<h3 align="center" class="cap" style="margin-top: 40px;"> Action # {{ loop.index }} </h3>
@@ -33,7 +36,7 @@
 					<span> {{ job.job }} </span>
 				</td>
 				<td>
-					<span> {{ users[job.team_leader].name }} {{ users[job.team_leader].surname }} </span>
+					<span> {{ users[job.team_leader - 1].name }} {{ users[job.team_leader - 1].surname }} </span>
 				</td>
 				<td>
 					<span> {{ job.work_size }} hours</span>
@@ -52,6 +55,11 @@
 				</td>
 			</tr>
 		</table>
+		{% if current_user.id == job.user.id or current_user.id == 1 %}
+			<a class="btn btn-danger" href="/delete_job/{{job.id}}">Удалить</a>
+			<a class="btn btn-warning" href="/сhange_job/{{job.id}}">Изменить</a>
+		{% endif %}
+
 	{% endfor %}
 </div>
 
