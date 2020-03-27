@@ -218,7 +218,7 @@ def delete_depart(department_id):
 
 def main():
     db_session.global_init("db/users.sqlite")
-    app.run(port=7981, host='127.0.0.1')
+    app.run(port=8080, host='127.0.0.1')
 
 
 if __name__ == '__main__':
