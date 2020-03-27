@@ -8,6 +8,7 @@
 	{% if current_user.is_authenticated %}
 	<a class="btn btn-info" href="/addjob">Добавить работу</a>
 	{% endif %}
+	<a class="btn btn-info" href="/departments">Посмотреть департаменты</a>
 	<hr>
 	{% for job in jobs %}
 		<h3 align="center" class="cap" style="margin-top: 40px;"> Action # {{ loop.index }} </h3>

@@ -1,0 +1,55 @@
+{% extends "base.html" %} 
+
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/page-style.css')}}">
+<div class="cont">
+	<h2 align="center" style="font-size: 54px; margin-bottom: 20px;">List of departments</h2>
+    <a class="btn btn-info" href="/">Вернуться к работам</a>
+	{% if current_user.is_authenticated %}
+	<a class="btn btn-info" href="/add_depart">Добавить департамент</a>
+	{% endif %}
+	<hr>
+	{% for depart in departments %}
+		<h3 align="center" class="cap" style="margin-top: 40px;"> Department # {{ loop.index }} </h3>
+
+		<table class="table" border="2" cellpadding="2px" width="100%">
+			<tr class="str1" bgcolor="#CCCCCC">
+				<th style="text-align: center;">
+					Title of department
+				</th>
+				<th style="text-align: center;">
+					Chief
+				</th>
+				<th style="text-align: center;">
+					Members
+				</th>
+				<th style="text-align: center;">
+					Department Email
+				</th>
+			</tr>
+
+			<tr class="str2" bgcolor="#CCCCFF">
+				<td>
+					<span> {{ depart.title }} </span>
+				</td>
+				<td>
+					<span> {{ users[depart.chief - 1].name }} {{ users[depart.chief - 1].surname }} </span>
+				</td>
+				<td>
+					<span> {{ depart.members }} </span>
+				</td>
+				<td>
+					<span> {{ depart.email }} </span>
+				</td>
+			</tr>
+		</table>
+		{% if current_user.id == depart.chief or current_user.id == 1 %}
+			<a class="btn btn-danger" href="/delete_depart/{{depart.id}}">Удалить департамент</a>
+			<a class="btn btn-warning" href="/сhange_depart/{{depart.id}}">Изменить департамент</a>
+		{% endif %}
+
+	{% endfor %}
+</div>
+
+{% endblock %}
