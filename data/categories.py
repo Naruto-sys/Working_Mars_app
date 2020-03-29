@@ -1,6 +1,6 @@
 import sqlalchemy
-
 from data.db_session import SqlAlchemyBase
+
 
 association_table = sqlalchemy.Table('association', SqlAlchemyBase.metadata,
                                      sqlalchemy.Column('jobs', sqlalchemy.Integer,
