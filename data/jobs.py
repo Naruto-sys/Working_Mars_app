@@ -18,6 +18,9 @@ class Jobs(SqlAlchemyBase):
 
     team_leader = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id"))
 
+    categories = orm.relation("Category",
+                              secondary="association",
+                              backref="jobs")
     user = orm.relation('User')
 
     def __repr__(self):

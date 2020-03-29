@@ -28,6 +28,9 @@
 					List of collaborators
 				</th>
 				<th style="text-align: center;">
+					Hazard category
+				</th>
+				<th style="text-align: center;">
 					Is finished
 				</th>
 			</tr>
@@ -44,6 +47,17 @@
 				</td>
 				<td>
 					<span> {{ job.collaborators }} </span>
+				</td>
+				<td>
+					<span>
+					{% for cat in job.categories %}
+						{% if not loop.last %}
+							{{ cat.name }},
+						{% else %}
+							{{ cat.name }}
+						{% endif %}
+					{% endfor %}
+					</span>
 				</td>
 				<td bgcolor="#FFB6C1">
 					<span>
